@@ -29,11 +29,11 @@
   cordova plugin add https://github.com/aerogear/aerogear-cordova-push.git#:/tests
   ```
 
-1. Add this plugin:
+3. Add this plugin:
   ```bash
   cordova plugin add http://git-wip-us.apache.org/repos/asf/cordova-plugin-test-framework.git
   ```
-1. Change the start page in `config.xml` with `<content src="cdvtests/index.html" />` or navigate to cdvtests/index.html from within your app.
+4. Change the start page in `config.xml` with `<content src="cdvtests/index.html" />` or navigate to cdvtests/index.html from within your app.
 
 ## Documentation
 
@@ -50,7 +50,22 @@ Many other plugins require Google Play Services and/or Firebase libraries. This 
 For example:
 
 ```
-cordova plugin add aerogear-cordova-push --variable FIREBASE_VERSION=11.8.0
+cordova plugin add aerogear-cordova-push --variable FIREBASE_VERSION=18.0.0
+```
+
+## AndroidX Support
+
+This plugin has [AndroidX](https://developer.android.com/jetpack/androidx) support. This means that you should migrate your project to AndroidX. To prevent to do it manually everytime, there are 2 great plugins to migrate it:
+
+1. First, enable AndroidX adding the [cordova-plugin-androidx](https://github.com/dpa99c/cordova-plugin-androidx) plugin:
+
+```
+cordova plugin add cordova-plugin-androidx
+```
+
+2. If you encounter build failures after installing (or after manually enabling AndroidX), try to install [cordova-plugin-androidx-adapter](https://github.com/dpa99c/cordova-plugin-androidx-adapter) into your project. It will migrate any references from the legacy Android Support library to use the new AndroidX which should resolve build failures.
+```
+cordova plugin add cordova-plugin-androidx-adapter
 ```
 
 ## Development

@@ -31,29 +31,19 @@
     <config-file target="AndroidManifest.xml" parent="/manifest">
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
       <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+	  <uses-permission android:name="android.permission.INTERNET" />
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <activity android:name="org.jboss.aerogear.cordova.push.PushHandlerActivity"/>
       <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" android:value="org.jboss.aerogear.cordova.push.NotificationMessageHandler" />
-      <service android:name="org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushInstanceIDListenerService" android:exported="false">
-        <intent-filter>
-          <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-        </intent-filter>
-      </service>
-      <service android:name="org.jboss.aerogear.android.unifiedpush.fcm.AeroGearFCMMessageReceiver">
-        <intent-filter>
-          <action android:name="com.google.firebase.MESSAGING_EVENT" />
-        </intent-filter>
-      </service>
     </config-file>
     <framework src="com.google.firebase:firebase-messaging:$FIREBASE_VERSION" />
-    <preference name="FIREBASE_VERSION" default="10.2.1"/>
-    <framework src="com.android.support:appcompat-v7:27.+" />
-    <framework src="com.android.support:support-v4:27.+" />
-    <framework src="com.android.support:support-compat:27.+" />
-    <framework src="com.android.support:support-annotations:27.+" />
+    <preference name="FIREBASE_VERSION" default="19.0.0"/>
+	<framework src="androidx.appcompat:appcompat:1.1.0" />
+	<framework src="androidx.core:core:1.1.0" />
+    <framework src="androidx.annotation:annotation:1.1.0" />
     <framework src="org.jboss.aerogear:aerogear-android-store:3.0.2" />
-    <framework src="org.jboss.aerogear:aerogear-android-push:4.0.2" />
+    <framework src="org.jboss.aerogear:aerogear-android-push:5.1.0" />
     <framework src="me.leolin:ShortcutBadger:1.1.12@aar"/>
     <framework src="src/android/dependencies.gradle" type="gradleReference" custom="true"/>
     <source-file src="src/android/org/jboss/aerogear/cordova/push/NotificationMessageHandler.java" target-dir="src/org/jboss/aerogear/cordova/push/"/>

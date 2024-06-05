@@ -2,7 +2,7 @@ repositories {
     mavenLocal()
 }
 
-cdvMinSdkVersion = Math.max(16, cdvHelpers.getConfigPreference('android-minSdkVersion', 0) as Integer)
+//cdvMinSdkVersion = Math.max(16, cdvHelpers.getConfigPreference('android-minSdkVersion', 0) as Integer)
 cdvPluginPostBuildExtras << {
     apply plugin: 'com.google.gms.google-services'
 }
@@ -17,15 +17,6 @@ if (file('src/main/AndroidManifest.xml').exists()) {
     manifestFile = 'AndroidManifest.xml'
 }
 
-import java.util.regex.Pattern
-
-def doExtractStringFromManifest(name) {
-    def manifestFile = file(android.sourceSets.main.manifest.srcFile)
-    def pattern = Pattern.compile(name + "=\"(.*?)\"")
-    def matcher = pattern.matcher(manifestFile.getText())
-    matcher.find()
-    return matcher.group(1)
-}
 
 android {
     sourceSets {
@@ -42,6 +33,6 @@ android {
     }
 
     defaultConfig {
-        applicationId = doExtractStringFromManifest("package")
+        applicationId cordovaConfig.PACKAGE_NAMESPACE
     }
  }
